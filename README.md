@@ -5,3 +5,9 @@ Research proof-of-concepts within a Swedish [research project](https://www.vinno
 
 This repo is managed by RISE Reseatch Insititutes of Sweden, area of Lifelong Learning, contact [@ollenyman].
 
+## Glossary
+- Sveriges referensram för kvalifikationer (SeQF)
+- Standard för svensk yrkesklassificering (SSYK2012)
+- Svensk utbildningsnomenklatur (SUN)
+- Standard för svensk näringsgrensindelning (SNI)
+- Europeiska klassificering av färdigheter, kvalifikationer och yrken (ESCO)
