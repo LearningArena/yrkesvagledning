@@ -5,7 +5,7 @@
 
 [Relational diagram](https://atlas.jobtechdev.se/page/about.html)
 
-API ?
+[API](https://taxonomy.api.jobtechdev.se/v1/taxonomy/swagger-ui/index.html)
 
 ## Some useful examples
 
