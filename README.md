@@ -17,23 +17,29 @@ Current data sources usage:
 
 flowchart TD
     B[CV] --> C{JobAd<br>enrichtextdocument}
-    C --> D[Competencies]
     C --> E[Occupations]
+    C --> D[Competencies]
     C --> F[Traits]
     B[CV] -.-> N{AI/LLM}
     N -.-> D[Competencies]
     D -->|user selection| G{JobEd<br>match-by-text}
-    G -->|user selection| H[Occupations]
-    G -->|user selection| I[Occupation Groups]
-    I --> J{Taxonomy<br>ssyk-level4 related}
+    G --> H[Occupations]
+    G --> I[Occupation Groups]
+    H --> R{Taxonomy<br>occ related<br>occ grp related}
+    I -->|user selection| R
+    R --> S[Occupation Fields]
+    Q{Yrkesprognoser dataset<br>- bristvärde} -.-> H
+    Q{Yrkesprognoser dataset<br>- bristvärde} -.-> I
+    I -->|user selection| J{Taxonomy<br>occ grp related}
     J --> K[skills]
-    K -.-> D
-    H --> L{JobSearch<br>- skills<br>- occupation-names<br>- occupation-groups<br>}
-    I --> L
+    H -->|user selection| L{JobSearch<br>- skills<br>- occupation<br>- occupation-groups<br>- occupation-field}
     D -->|user selection| L
-    L -.-> M[Ads<br>- occupation<br>- occupation_group<br>- occupation_field<br>- ...]
-    M -.-> O{Yrkesprognoser dataset}
-    O -.-> P[Bristvärde]
+    I -->|user selection| L
+    K -->|user selection| L
+    S -->|user selection| L
+    L --> M[Ads<br>]
+    O{Yrkesprognoser dataset<br>- bristvärde} -.-> M
+    T{JobAd<br>enrichtextdocument<br>- competencies} -.-> M
 
 ```
 
