@@ -16,32 +16,54 @@ Current data sources usage:
 ```mermaid
 
 flowchart TD
-    B[CV] --> C{JobAd<br>enrichtextdocument}
-    C --> E[Occupations]
-    C --> D[Competencies]
-    C --> F[Traits]
+    classDef taxonomy color:#ff0
+    classDef userselect fill:#555,stroke:#555
+    subgraph CV Start
+        B[CV] --> C{JobAd<br>enrichtextdocument}
+        C --> E[Occupation terms]
+        C --> D[Competence terms]
+        C --> F[Trait terms]
+    end
     B[CV] -.-> N{AI/LLM}
-    N -.-> D[Competencies]
-    D -->|user selection| G{JobEd<br>match-by-text}
-    G --> H[Occupations]
-    G --> I[Occupation Groups]
-    H --> R{Taxonomy<br>occ related<br>occ grp related}
-    I -->|user selection| R
-    R --> S[Occupation Fields]
+    N -.-> D
+    subgraph Insight
+        D --> V[user selection]:::userselect
+        V --> G{JobEd<br>match-by-text}
+        G --> H[Occupations]:::taxonomy
+        G --> I[Occupation Groups]:::taxonomy
+        H --> U{Taxonomy<br>related}
+        I --> R{Taxonomy<br>related}
+        R --> S[Occupation Fields]:::taxonomy
+        U --> S
+        I --> J{Taxonomy<br>related}
+        J --> K[Skills]:::taxonomy
+        K -->|user repeat| V
+    end
     Q{Yrkesprognoser dataset<br>- bristvärde} -.-> H
     Q{Yrkesprognoser dataset<br>- bristvärde} -.-> I
-    I -->|user selection| J{Taxonomy<br>occ grp related}
-    J --> K[skills]
-    H -->|user selection| L{JobSearch<br>- skills<br>- occupation<br>- occupation-groups<br>- occupation-field}
-    D -->|user selection| L
-    I -->|user selection| L
-    K -->|user selection| L
-    S -->|user selection| L
-    L --> M[Ads<br>]
+    subgraph Outlook
+        K --> X[user selection]:::userselect
+        S --> Y[user selection]:::userselect
+        I --> Z[user selection]:::userselect
+    end
+    subgraph Future
+        H --> AB[user adjustments]:::userselect
+        V --> AB
+        X --> AB
+        Y --> AB
+        Z --> AB
+        AB -->|user selection| L{JobSearch<br>- skills<br>- occupation<br>- occupation-groups<br>- occupation-field}
+        L --> M[Ads<br>]
+        M -->|user repeat| AB
+    end
     O{Yrkesprognoser dataset<br>- bristvärde} -.-> M
     T{JobAd<br>enrichtextdocument<br>- competencies} -.-> M
+    subgraph MyPath
+        M -.-> AC[Din resa, jobed utbildningar etc ...]
+    end
 
 ```
+<!-- Last mermaid letter: AC -->
 
 ## Glossary
 - Sveriges referensram för kvalifikationer (SeQF)
