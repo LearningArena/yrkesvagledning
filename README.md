@@ -39,8 +39,7 @@ flowchart TD
         J --> K[Skills]:::taxonomy
         K -->|user repeat| V
     end
-    Q{Yrkesprognoser dataset<br>- bristvärde} -.-> H
-    Q{Yrkesprognoser dataset<br>- bristvärde} -.-> I
+    Q{Yrkesprognoser dataset<br>- bristvärde} --> I
     subgraph Outlook
         K --> X[user selection]:::userselect
         S --> Y[user selection]:::userselect
@@ -52,12 +51,12 @@ flowchart TD
         X --> AB
         Y --> AB
         Z --> AB
-        AB -->|user selection| L{JobSearch<br>- skills<br>- occupation<br>- occupation-groups<br>- occupation-field}
+        AB -->|user selection| L{JobSearch<br>- skills<br>- occupation<br>- occupation-groups<br>- occupation-field<br>- cv competences}
         L --> M[Ads<br>]
         M -->|user repeat| AB
     end
-    O{Yrkesprognoser dataset<br>- bristvärde} -.-> M
-    T{JobAd<br>enrichtextdocument<br>- competencies} -.-> M
+    O{Yrkesprognoser dataset<br>- bristvärde} --> M
+    T{JobAd<br>enrichtextdocument<br>- competencies} --> M
     subgraph MyPath
         M -.-> AC[Din resa, jobed utbildningar etc ...]
     end
